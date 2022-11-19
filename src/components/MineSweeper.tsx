@@ -22,7 +22,7 @@ const MineSweeper = ({
   // }, [])
   return (
     <Context.Provider value={dispatch}>
-      <GameBoardGrid></GameBoardGrid>
+      <GameBoardGrid board={state.board}></GameBoardGrid>
     </Context.Provider>
   )
 }
