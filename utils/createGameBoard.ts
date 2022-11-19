@@ -3,6 +3,7 @@ import data from '../public/grid.json'
 import {
   gridValidator,
   jsonValidator,
+  positionValidator,
   possiblePositionValidator,
 } from './validators'
 import type { Grid, NeighborTransform, Position } from './validators'
@@ -36,10 +37,12 @@ function constructBoard(grid: Grid) {
           numNeighborMines++
         }
       })
-      const mine = grid[i][j] === 1
+
+      const position = positionValidator.parse([i, j])
+      const mine = grid[position[0]][position[1]] === 1
       // count number of mines in grid
       if (mine) {
-        minePositions.push([i, j])
+        minePositions.push(position)
       }
       // return a cell
       const gameCell = {
@@ -47,6 +50,7 @@ function constructBoard(grid: Grid) {
         flagged: false,
         mine,
         numNeighborMines,
+        position: position,
       }
       return gameCell
     })
