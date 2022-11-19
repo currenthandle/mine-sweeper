@@ -1,4 +1,5 @@
 import GameBoardGrid from './GameBoardGrid'
+import grid from '../../public/grid.json'
 
 const MineSweeper = () => {
   return (
