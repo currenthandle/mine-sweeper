@@ -1,5 +1,5 @@
 import GameBoardGrid from './GameBoardGrid'
-import type { Board, Position } from '../../utils/validators'
+import type { Action, Board, Position, State } from '../../utils/validators'
 import reducer from '../../utils/reducer'
 import { useReducer } from 'react'
 
