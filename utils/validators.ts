@@ -18,11 +18,13 @@ export const positionValidator = z.tuple([
 ])
 export const possiblePositionValidator = z.tuple([z.number(), z.number()])
 
-export const neighborTransformsValidator = z.array(
-  z.tuple([z.number().min(-1).max(1), z.number().min(-1).max(1)])
-)
-
+export const neighborTransformValidator = z.tuple([
+  z.number().min(-1).max(1),
+  z.number().min(-1).max(1),
+])
+export const neighborTransformsValidator = z.array(neighborTransformValidator)
 export type Cell = z.infer<typeof cellValidator>
 export type Grid = z.infer<typeof gridValidator>
 export type Board = z.infer<typeof boardValidator>
 export type Position = z.infer<typeof positionValidator>
+export type NeighborTransform = z.infer<typeof neighborTransformValidator>

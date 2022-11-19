@@ -3,6 +3,7 @@ import data from '../public/grid.json'
 import {
   gridValidator,
   jsonValidator,
+  NeighborTransform,
   Position,
   positionValidator,
   possiblePositionValidator,
@@ -20,7 +21,7 @@ function constructBoard(grid: Grid) {
   grid.map((row, i) => {
     row.map((cell, j) => {
       const validNeighbors = neighborTranforms.reduce(
-        (acc, neighborTransform) => {
+        (acc: Position[], neighborTransform: NeighborTransform): Position[] => {
           // console.log('acc', acc)
           // console.log('neighborTransform', neighborTransform)
           // console.log('[i,j]', [i, j])
@@ -39,9 +40,9 @@ function constructBoard(grid: Grid) {
         []
       )
       // return {}
-      console.log('i, j', [i, j])
-      console.log('validNeighbors', validNeighbors)
-      console.log('')
+      // console.log('i, j', [i, j])
+      // console.log('validNeighbors', validNeighbors)
+      // console.log('')
     })
   })
 }
