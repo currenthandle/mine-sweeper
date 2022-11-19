@@ -1,13 +1,10 @@
-import { z } from 'zod'
 import data from '../public/grid.json'
 
-const jsonValidator = z.object({
-  data: z.array(z.array(z.number())),
-})
-const gridValidator = z.array(z.array(z.number()))
+import { gridValidator, jsonValidator } from './validators'
+import type { Grid } from './validators'
 
 // construct gameboard
-function constructBoard(grid) {
+function constructBoard(grid: Grid) {
   console.log('grid', grid)
   console.log('Array.isArray(grid)', Array.isArray(grid))
 
