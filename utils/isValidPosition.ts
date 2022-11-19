@@ -1,6 +1,9 @@
 import type { Grid, Board, Position } from './validators'
 
-export default function validPosition(board: Grid | Board, position: Position) {
+export default function isValidPosition(
+  board: Grid | Board,
+  position: Position
+) {
   const [row, col] = position
   const numRows = board.length
   const numCols = board[0].length
