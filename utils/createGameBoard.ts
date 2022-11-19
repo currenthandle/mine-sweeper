@@ -3,12 +3,9 @@ import data from '../public/grid.json'
 import {
   gridValidator,
   jsonValidator,
-  NeighborTransform,
-  Position,
-  positionValidator,
   possiblePositionValidator,
 } from './validators'
-import type { Grid } from './validators'
+import type { Grid, NeighborTransform, Position } from './validators'
 import neighborTranforms from './neighborTranforms'
 import isValidPosition from './isValidPosition'
 
