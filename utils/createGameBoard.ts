@@ -16,20 +16,15 @@ import isValidPosition from './isValidPosition'
 function constructBoard(grid: Grid) {
   // console.log('grid', grid)
   // console.log('Array.isArray(grid)', Array.isArray(grid))
-  // console.log('neighborTranforms', neighborTranforms)
+  console.log('neighborTranforms', neighborTranforms)
 
   grid.map((row, i) => {
     row.map((cell, j) => {
       const validNeighbors = neighborTranforms.reduce(
         (acc: Position[], neighborTransform: NeighborTransform): Position[] => {
           // console.log('acc', acc)
-          // console.log('neighborTransform', neighborTransform)
-          // console.log('[i,j]', [i, j])
           const [dY, dX] = neighborTransform
           const nPos = possiblePositionValidator.parse([i + dY, j + dX])
-          // const nPos = [i + dY, j + dX]
-          // console.log('nPos', nPos)
-          // console.log('')
 
           if (isValidPosition(grid, nPos)) {
             // console.log('nPos', nPos)
@@ -40,9 +35,9 @@ function constructBoard(grid: Grid) {
         []
       )
       // return {}
-      // console.log('i, j', [i, j])
-      // console.log('validNeighbors', validNeighbors)
-      // console.log('')
+      console.log('i, j', [i, j])
+      console.log('validNeighbors', validNeighbors)
+      console.log('')
     })
   })
 }
