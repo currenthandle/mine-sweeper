@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   const gameBoard = createGameBoard()
   return (
     <div>
-      <MineSweeper></MineSweeper>
+      <MineSweeper initalBoard={gameBoard}></MineSweeper>
     </div>
   )
 }

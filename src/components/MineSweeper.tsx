@@ -1,7 +1,8 @@
 import GameBoardGrid from './GameBoardGrid'
 import grid from '../../public/grid.json'
+import { Board } from '../../utils/validators'
 
-const MineSweeper = () => {
+const MineSweeper = ({ initalBoard }: { initalBoard: Board }) => {
   return (
     <div>
       <GameBoardGrid></GameBoardGrid>
