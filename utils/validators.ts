@@ -8,7 +8,7 @@ export const cellValidator = z.object({
   shown: z.boolean(),
   flagged: z.boolean(),
   mine: z.boolean(),
-  numNeighbors: z.optional(z.number().nonnegative()),
+  numNeighborMines: z.number().nonnegative(),
 })
 export const gridValidator = z.array(z.array(z.number()).min(1)).min(1)
 export const boardValidator = z.array(z.array(cellValidator).min(1)).min(1)

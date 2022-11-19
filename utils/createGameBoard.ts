@@ -14,32 +14,41 @@ import isValidPosition from './isValidPosition'
 
 // construct gameboard
 function constructBoard(grid: Grid) {
-  // console.log('grid', grid)
-  // console.log('Array.isArray(grid)', Array.isArray(grid))
-  console.log('neighborTranforms', neighborTranforms)
-
-  grid.map((row, i) => {
-    row.map((cell, j) => {
+  const gameBoard = grid.map((row, i) => {
+    return row.map((cell, j) => {
       const validNeighbors = neighborTranforms.reduce(
         (acc: Position[], neighborTransform: NeighborTransform): Position[] => {
-          // console.log('acc', acc)
           const [dY, dX] = neighborTransform
           const nPos = possiblePositionValidator.parse([i + dY, j + dX])
 
           if (isValidPosition(grid, nPos)) {
-            // console.log('nPos', nPos)
             return [...acc, nPos]
           }
           return acc
         },
         []
       )
-      // return {}
-      console.log('i, j', [i, j])
-      console.log('validNeighbors', validNeighbors)
-      console.log('')
+      // count neighboring mines
+      let numNeighborMines = 0
+      validNeighbors.forEach((neighbor) => {
+        const [y, x] = neighbor
+        // console.log('neighbor', neighbor)
+        if (grid[y][x] === 1) {
+          numNeighborMines++
+        }
+      })
+      // return a cell
+      const gameCell = {
+        shown: false,
+        flagged: false,
+        mine: grid[i][j] === 1,
+        numNeighborMines,
+      }
+      return gameCell
     })
   })
+
+  return gameBoard
 }
 
 // count neighboring mines
@@ -48,4 +57,6 @@ export default function createGameBoard() {
   jsonValidator.parse(data)
   const grid = gridValidator.parse(data.data)
   const gameBoard = constructBoard(grid)
+  console.log('gameBoard', gameBoard)
+  return gameBoard
 }
