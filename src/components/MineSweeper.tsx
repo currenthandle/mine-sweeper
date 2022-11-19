@@ -2,6 +2,8 @@ import GameBoardGrid from './GameBoardGrid'
 import type { Action, Board, Position, State } from '../../utils/validators'
 import reducer from '../../utils/reducer'
 import { useReducer } from 'react'
+import React from 'react'
+import Context from '../../utils/context'
 
 const MineSweeper = ({
   initalBoard,
@@ -19,9 +21,9 @@ const MineSweeper = ({
   //   dispatch({type: 'initaligazeState'})
   // }, [])
   return (
-    <div>
+    <Context.Provider value={dispatch}>
       <GameBoardGrid></GameBoardGrid>
-    </div>
+    </Context.Provider>
   )
 }
 export default MineSweeper
