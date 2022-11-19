@@ -1,8 +1,7 @@
 import GameBoardGrid from './GameBoardGrid'
-import grid from '../../public/grid.json'
-import { Board, Position } from '../../utils/validators'
-import { useEffect, useReducer } from 'react'
+import type { Board, Position } from '../../utils/validators'
 import reducer from '../../utils/reducer'
+import { useReducer } from 'react'
 
 const MineSweeper = ({
   initalBoard,
@@ -17,7 +16,7 @@ const MineSweeper = ({
     flags: 0,
   })
   // useEffect(() => {
-  //   dispatch({type: 'initalizeState'})
+  //   dispatch({type: 'initaligazeState'})
   // }, [])
   return (
     <div>
