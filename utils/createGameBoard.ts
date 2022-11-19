@@ -11,6 +11,8 @@ import isValidPosition from './isValidPosition'
 
 // construct gameboard
 function constructBoard(grid: Grid) {
+  // can I do this with zod instead?
+  const minePositions = [] as Position[]
   const gameBoard = grid.map((row, i) => {
     return row.map((cell, j) => {
       const validNeighbors = neighborTranforms.reduce(
@@ -34,18 +36,23 @@ function constructBoard(grid: Grid) {
           numNeighborMines++
         }
       })
+      const mine = grid[i][j] === 1
+      // count number of mines in grid
+      if (mine) {
+        minePositions.push([i, j])
+      }
       // return a cell
       const gameCell = {
         shown: false,
         flagged: false,
-        mine: grid[i][j] === 1,
+        mine,
         numNeighborMines,
       }
       return gameCell
     })
   })
 
-  return gameBoard
+  return { gameBoard, minePositions }
 }
 
 // count neighboring mines
