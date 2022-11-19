@@ -28,9 +28,15 @@ export const stateValidator = z.object({
   flags: z.number(),
 })
 
+export const actionValidator = z.object({
+  type: z.string(),
+  payload: positionValidator,
+})
+
 export type Cell = z.infer<typeof cellValidator>
 export type Grid = z.infer<typeof gridValidator>
 export type Board = z.infer<typeof boardValidator>
 export type Position = z.infer<typeof positionValidator>
 export type NeighborTransform = z.infer<typeof neighborTransformValidator>
 export type State = z.infer<typeof stateValidator>
+export type Action = z.infer<typeof actionValidator>
