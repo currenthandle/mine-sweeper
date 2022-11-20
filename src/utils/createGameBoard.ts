@@ -18,19 +18,6 @@ function constructBoard(grid: Grid) {
   const gameBoard = grid.map((row, i) => {
     return row.map((cell, j) => {
       const validNeighbors = getValidNeighbors(grid, [i, j])
-      // const validNeighbors = neighborTranforms.reduce(
-      //   (acc: Position[], neighborTransform: NeighborTransform): Position[] => {
-      //     const [dY, dX] = neighborTransform
-      //     const nPos = possiblePositionValidator.parse([i + dY, j + dX])
-
-      //     if (isValidPosition(grid, nPos)) {
-      //       return [...acc, nPos]
-      //     }
-      //     return acc
-      //   },
-      //   []
-      // )
-      // count neighboring mines
       let numNeighborMines = 0
       validNeighbors.forEach((neighbor) => {
         const [y, x] = neighbor
