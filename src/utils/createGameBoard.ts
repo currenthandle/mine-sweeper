@@ -1,14 +1,7 @@
 import data from '../../public/grid.json'
 
-import {
-  gridValidator,
-  jsonValidator,
-  positionValidator,
-  possiblePositionValidator,
-} from './validators'
-import type { Grid, NeighborTransform, Position } from './validators'
-import neighborTranforms from './neighborTranforms'
-import isValidPosition from './isValidPosition'
+import { gridValidator, jsonValidator, positionValidator } from './validators'
+import type { Grid, Position } from './validators'
 import getValidNeighbors from './getValidNeighbors'
 
 // construct gameboard
@@ -22,14 +15,15 @@ function constructBoard(grid: Grid) {
       //  validNeighbors.forEach((neighbor) => {
       for (const neighbor of validNeighbors) {
         const [y, x] = neighbor
-        // console.log('neighbor', neighbor)
-        if (grid[y][x] === 1) {
+        const gridCell = (grid[y] as number[])[x] as number
+        if (gridCell === 1) {
           numNeighborMines++
         }
       }
 
       const position = positionValidator.parse([i, j])
-      const mine = grid[position[0]][position[1]] === 1
+      const gridCell = (grid[position[0]] as number[])[position[1]] as number
+      const mine = gridCell === 1
       // count number of mines in grid
       if (mine) {
         minePositions.push(position)
@@ -56,6 +50,5 @@ export default function createGameBoard() {
   jsonValidator.parse(data)
   const grid = gridValidator.parse(data.data)
   const gameBoard = constructBoard(grid)
-  console.log('gameBoard', gameBoard)
   return gameBoard
 }
