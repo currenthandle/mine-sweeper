@@ -16,12 +16,14 @@ const MineSweeper = ({
     board: initalBoard,
     minePositions,
     flags: 0,
+    gameOn: true,
+    alive: true,
   })
   // useEffect(() => {
   //   dispatch({type: 'initaligazeState'})
   // }, [])
   return (
-    <div className='grid justify-center'>
+    <div className='grid justify-center pt-40'>
       <Context.Provider value={dispatch}>
         <GameBoardGrid board={state.board}></GameBoardGrid>
       </Context.Provider>

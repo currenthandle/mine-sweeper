@@ -27,11 +27,13 @@ export const stateValidator = z.object({
   board: boardValidator,
   minePositions: z.array(positionValidator),
   flags: z.number(),
+  alive: z.boolean(),
+  gameOn: z.boolean(),
 })
 
 export const actionValidator = z.object({
   type: z.string(),
-  payload: positionValidator,
+  payload: cellValidator,
 })
 
 export type Cell = z.infer<typeof cellValidator>
