@@ -1,4 +1,4 @@
-import { Board } from '../utils/validators'
+import type { Board } from '../utils/validators'
 import React from 'react'
 import GameCell from './GameCell'
 

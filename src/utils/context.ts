@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import type { Action, State } from './validators'
+import type { Action } from './validators'
 
 const Context = createContext({} as React.Dispatch<Action>)
 export default Context

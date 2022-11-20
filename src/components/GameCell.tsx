@@ -1,3 +1,4 @@
+import React from 'react'
 import { Cell } from '../utils/validators'
 
 const GameCell = ({ cell }: { cell: Cell }): JSX.Element => {
