@@ -33,7 +33,7 @@ export const stateValidator = z.object({
 
 export const actionValidator = z.object({
   type: z.string(),
-  payload: cellValidator,
+  payload: z.union([cellValidator, boardValidator]),
 })
 
 export type Cell = z.infer<typeof cellValidator>

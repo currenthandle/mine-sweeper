@@ -1,17 +1,27 @@
 import React from 'react'
 import { useContext } from 'react'
-import Context from '../utils/context'
+import { DispatchContext, StateContext } from '../utils/context'
 import type { Cell } from '../utils/validators'
 
 const GameCell = ({ cell }: { cell: Cell }): JSX.Element => {
-  const dispatch = useContext(Context)
+  const state = useContext(StateContext)
+  const dispatch = useContext(DispatchContext)
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
+    if (cell.shown) {
+      return
+    }
 
+    const y = cell.position[0]
+    const x = cell.position[1]
+
+    const board = state.board
+    const boardCell = (board[y] as Cell[])[x] as Cell
+    boardCell.flagged = !cell.flagged
     // if holding shift
     if (e.shiftKey) {
-      dispatch({ type: 'toggleFlag', payload: cell })
+      dispatch({ type: 'toggleFlag', payload: board })
     } else {
       dispatch({ type: 'clickCell', payload: cell })
     }

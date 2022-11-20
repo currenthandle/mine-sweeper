@@ -3,7 +3,7 @@ import type { Board, Position } from '../utils/validators'
 import reducer from '../utils/reducer'
 import { useReducer } from 'react'
 import React from 'react'
-import Context from '../utils/context'
+import { DispatchContext, StateContext } from '../utils/context'
 
 const MineSweeper = ({
   initalBoard,
@@ -24,9 +24,11 @@ const MineSweeper = ({
   // }, [])
   return (
     <div className='grid justify-center pt-10'>
-      <Context.Provider value={dispatch}>
-        <GameBoardGrid board={state.board}></GameBoardGrid>
-      </Context.Provider>
+      <StateContext.Provider value={state}>
+        <DispatchContext.Provider value={dispatch}>
+          <GameBoardGrid board={state.board}></GameBoardGrid>
+        </DispatchContext.Provider>
+      </StateContext.Provider>
     </div>
   )
 }
