@@ -7,7 +7,6 @@ const GameBoardGrid = ({ board }: { board: Board }) => {
     <div className='grid grid-cols-3'>
       {board.map((row) => {
         return row.map((cell) => {
-          console.log('cell', cell)
           return (
             <GameCell
               key={`${cell.position[0]} + ${cell.position[1]}`}

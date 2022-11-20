@@ -65,6 +65,5 @@ export default function createGameBoard() {
   jsonValidator.parse(data)
   const grid = gridValidator.parse(data.data)
   const gameBoard = constructBoard(grid)
-  console.log('gameBoard', gameBoard)
   return gameBoard
 }
