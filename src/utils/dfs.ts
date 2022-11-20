@@ -8,6 +8,9 @@ const dfs = (board, cell) => {
   }
 
   cell.shown = true
+  if (cell.numNeighborMines > 0) {
+    return board
+  }
 
   console.log('')
   console.log('before************', cell)
