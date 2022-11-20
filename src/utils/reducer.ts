@@ -1,11 +1,12 @@
 import dfs from './dfs'
-import type { Action, State } from './validators'
+import type { Action, Cell, State } from './validators'
 
 const reducer = (state: State, action: Action) => {
   console.log('state', state)
   console.log('action', action)
   // console.log('')
-  const board = [...state.board]
+  //const board = [...state.board]
+  const board = state.board
 
   switch (action.type) {
     case 'toggleFlag': {
@@ -15,40 +16,22 @@ const reducer = (state: State, action: Action) => {
         return state
       }
 
-      // cell.flagged = !cell.flagged
-      // console.log(
-      //   'board[cell.position[0]][cell.position[1]]',
-      //   board[cell.position[0]][cell.position[1]]
-      // )
-      // console.log('cell before toggle', cell.flagged)
-      // console.log(
-      //   'board[cell.position[0]][cell.position[1]]',
-      //   board[cell.position[0]][cell.position[1]]
-      // )
-      console.log(
-        'board[cell.position[0]][cell.position[1]].flagged',
-        board[cell.position[0]][cell.position[1].flagged]
-      )
-      let newFlagVal
-      if (cell.flagged) {
-        newFlagVal = false
-      } else {
-        console.log('ELSE')
-        newFlagVal = true
+      const y = cell.position[0]
+      const x = cell.position[1]
+
+      // ;((board[y] as Cell[])[x] as Cell).flagged
+      const newCell = (board[y] as Cell[])[x] as Cell
+
+      console.log('newCell', newCell)
+      newCell.flagged = !cell.flagged
+      console.log('newCell', newCell)
+      console.log('board', board)
+      // board[y][x] = newCell
+      // console.log('')
+      return {
+        ...state,
+        board,
       }
-      console.log('newFlagVal', newFlagVal)
-      cell.flagged = !cell.flagged
-      board[cell.position[0]][cell.position[1]]?.flagged = newFlagVal
-      // cell.flagged = !cell.flagged
-      // const isCellFlagged = cell.flagged
-      // board[cell.position[0]][cell.position[1]].flagged = !isCellFlagged
-      // console.log('cell.flagged', cell)
-      // console.log('============================')
-      // console.log('board', board)
-      const newState = { ...state, board }
-      console.log('newState', newState)
-      return newState
-      // return state
     }
     case 'clickCell': {
       const cell = action.payload

@@ -6,7 +6,7 @@ import type { Cell } from '../utils/validators'
 const GameCell = ({ cell }: { cell: Cell }): JSX.Element => {
   const dispatch = useContext(Context)
 
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault()
 
     // if holding shift
