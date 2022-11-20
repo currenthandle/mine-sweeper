@@ -1,5 +1,6 @@
 import { Board } from '../../utils/validators'
 import React from 'react'
+import GameCell from './GameCell'
 
 const GameBoardGrid = ({ board }: { board: Board }) => {
   return (
@@ -8,7 +9,10 @@ const GameBoardGrid = ({ board }: { board: Board }) => {
         return row.map((cell) => {
           console.log('cell', cell)
           return (
-            <div key={`${cell.position[0]} + ${cell.position[1]}`}>Cell</div>
+            <GameCell
+              cell={cell}
+              key={`${cell.position[0]} + ${cell.position[1]}`}
+            ></GameCell>
           )
         })
       })}
