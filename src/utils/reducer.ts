@@ -8,9 +8,7 @@ const reducer = (state: State, action: Action) => {
 
   switch (action.type) {
     case 'clickCell': {
-      // console.log(' in click')
       const cell = action.payload
-      // console.log('cell', cell)
 
       const board = [...state.board]
 
@@ -25,17 +23,12 @@ const reducer = (state: State, action: Action) => {
           board: newBoard,
         }
       } else {
-        // console.log('else')
-        // should have to do this
-        // console.log('in else')
         board[cell.position[0]][cell.position[1]].shown = true
         return {
           ...state,
           board,
         }
       }
-
-      return state
     }
     default: {
       return state
