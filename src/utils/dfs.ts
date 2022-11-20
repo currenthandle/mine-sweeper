@@ -1,7 +1,7 @@
 import getValidNeighbors from './getValidNeighbors'
-// import neighborTransforms from './neighborTranforms'
+import type { Board, Cell } from './validators'
 
-const dfs = (board, cell) => {
+const dfs = (board: Board, cell: Cell) => {
   // console.log('in dfs')
   if (cell.shown) {
     return board
@@ -14,7 +14,7 @@ const dfs = (board, cell) => {
 
   const validNeighbors = getValidNeighbors(board, cell.position)
   validNeighbors.forEach((neighbor) => {
-    return dfs(board, board[neighbor[0]][neighbor[1]])
+    return dfs(board, (board[neighbor[0]] as Cell[])[neighbor[1]] as Cell)
   })
 
   return board

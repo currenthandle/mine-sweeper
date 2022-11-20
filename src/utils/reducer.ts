@@ -50,10 +50,12 @@ const reducer = (state: State, action: Action) => {
           board: newBoard,
         }
       } else {
-        board[cell.position[0]][cell.position[1]].shown = true
+        const newBoard = ((
+          (board[cell.position[0]] as Cell[])[cell.position[1]] as Cell
+        ).shown = true)
         return {
           ...state,
-          board,
+          newBoard,
         }
       }
     }
