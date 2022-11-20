@@ -11,7 +11,7 @@ const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case 'toggleFlag': {
       const cell = action.payload
-      console.log('cell after actoion payload', cell)
+      // console.log('cell after actoion payload', cell)
       if (cell.shown) {
         return state
       }
@@ -20,17 +20,25 @@ const reducer = (state: State, action: Action) => {
       const x = cell.position[1]
 
       // ;((board[y] as Cell[])[x] as Cell).flagged
-      const newCell = (board[y] as Cell[])[x] as Cell
+      const newCell = (state.board[y] as Cell[])[x] as Cell
+      console.log('x', x)
+      console.log('y', y)
 
       console.log('newCell', newCell)
       newCell.flagged = !cell.flagged
-      console.log('newCell', newCell)
-      console.log('board', board)
+      console.log('cell!!!!!!', cell)
+      console.log('newCell222', newCell)
+      console.log('typeof newCell', typeof newCell)
+      console.log('board after', state.board)
+      const newBoard = [...state.board]
+      // newBoard[y][x] = newCell
+      newBoard[y][x] = true
+
       // board[y][x] = newCell
-      // console.log('')
+      console.log('')
       return {
         ...state,
-        board,
+        board: newBoard,
       }
     }
     case 'clickCell': {
