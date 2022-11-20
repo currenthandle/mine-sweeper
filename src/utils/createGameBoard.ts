@@ -19,13 +19,14 @@ function constructBoard(grid: Grid) {
     return row.map((cell, j) => {
       const validNeighbors = getValidNeighbors(grid, [i, j])
       let numNeighborMines = 0
-      validNeighbors.forEach((neighbor) => {
+      //  validNeighbors.forEach((neighbor) => {
+      for (const neighbor of validNeighbors) {
         const [y, x] = neighbor
         // console.log('neighbor', neighbor)
         if (grid[y][x] === 1) {
           numNeighborMines++
         }
-      })
+      }
 
       const position = positionValidator.parse([i, j])
       const mine = grid[position[0]][position[1]] === 1
