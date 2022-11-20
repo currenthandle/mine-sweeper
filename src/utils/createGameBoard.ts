@@ -9,6 +9,7 @@ import {
 import type { Grid, NeighborTransform, Position } from './validators'
 import neighborTranforms from './neighborTranforms'
 import isValidPosition from './isValidPosition'
+import getValidNeighbors from './getValidNeighbors'
 
 // construct gameboard
 function constructBoard(grid: Grid) {
@@ -16,18 +17,19 @@ function constructBoard(grid: Grid) {
   const minePositions = [] as Position[]
   const gameBoard = grid.map((row, i) => {
     return row.map((cell, j) => {
-      const validNeighbors = neighborTranforms.reduce(
-        (acc: Position[], neighborTransform: NeighborTransform): Position[] => {
-          const [dY, dX] = neighborTransform
-          const nPos = possiblePositionValidator.parse([i + dY, j + dX])
+      const validNeighbors = getValidNeighbors(grid, [i, j])
+      // const validNeighbors = neighborTranforms.reduce(
+      //   (acc: Position[], neighborTransform: NeighborTransform): Position[] => {
+      //     const [dY, dX] = neighborTransform
+      //     const nPos = possiblePositionValidator.parse([i + dY, j + dX])
 
-          if (isValidPosition(grid, nPos)) {
-            return [...acc, nPos]
-          }
-          return acc
-        },
-        []
-      )
+      //     if (isValidPosition(grid, nPos)) {
+      //       return [...acc, nPos]
+      //     }
+      //     return acc
+      //   },
+      //   []
+      // )
       // count neighboring mines
       let numNeighborMines = 0
       validNeighbors.forEach((neighbor) => {
