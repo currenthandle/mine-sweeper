@@ -23,7 +23,7 @@ const MineSweeper = ({
   //   dispatch({type: 'initaligazeState'})
   // }, [])
   return (
-    <div className='grid justify-center pt-40'>
+    <div className='grid justify-center pt-10'>
       <Context.Provider value={dispatch}>
         <GameBoardGrid board={state.board}></GameBoardGrid>
       </Context.Provider>
