@@ -2,7 +2,7 @@ import getValidNeighbors from './getValidNeighbors'
 // import neighborTransforms from './neighborTranforms'
 
 const dfs = (board, cell) => {
-  console.log('in dfs')
+  // console.log('in dfs')
   if (cell.shown) {
     return board
   }
@@ -12,13 +12,13 @@ const dfs = (board, cell) => {
     return board
   }
 
-  console.log('')
-  console.log('before************', cell)
+  // console.log('')
+  // console.log('before************', cell)
 
   const validNeighbors = getValidNeighbors(board, cell.position)
-  console.log('validNeighbors', validNeighbors)
+  // console.log('validNeighbors', validNeighbors)
   validNeighbors.forEach((neighbor) => {
-    console.log('neighbor', neighbor)
+    // console.log('neighbor', neighbor)
     return dfs(board, board[neighbor[0]][neighbor[1]])
   })
 

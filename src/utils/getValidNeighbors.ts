@@ -7,7 +7,7 @@ export default function getValidNeighbors(
   grid: Board | Grid,
   position: Position
 ) {
-  console.log('position000000000', position)
+  // console.log('position000000000', position)
   const [i, j] = position
   const validNeighbors = neighborTranforms.reduce(
     (acc: Position[], neighborTransform: NeighborTransform): Position[] => {
