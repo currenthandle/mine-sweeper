@@ -1,3 +1,4 @@
+import dfs from './dfs'
 import type { Action, State } from './validators'
 
 const reducer = (state: State, action: Action) => {
@@ -10,6 +11,7 @@ const reducer = (state: State, action: Action) => {
       console.log(' in click')
       const cell = action.payload
       console.log('cell', cell)
+
       const board = [...state.board]
 
       if (cell.flagged || cell.shown || !state.alive || !state.gameOn) {
@@ -17,6 +19,11 @@ const reducer = (state: State, action: Action) => {
       }
       if (cell.numNeighborMines === 0 && !cell.mine) {
         console.log('0')
+        const newBoard = dfs(board, cell)
+        return {
+          ...state,
+          board: newBoard,
+        }
       } else {
         console.log('else')
         // should have to do this

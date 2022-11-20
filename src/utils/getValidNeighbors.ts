@@ -3,7 +3,11 @@ import isValidPosition from './isValidPosition'
 import type { Board, Grid, NeighborTransform, Position } from './validators'
 import { possiblePositionValidator } from './validators'
 
-export default function test(grid: Board | Grid, position: Position) {
+export default function getValidNeighbors(
+  grid: Board | Grid,
+  position: Position
+) {
+  console.log('position000000000', position)
   const [i, j] = position
   const validNeighbors = neighborTranforms.reduce(
     (acc: Position[], neighborTransform: NeighborTransform): Position[] => {
