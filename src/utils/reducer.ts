@@ -8,9 +8,9 @@ const reducer = (state: State, action: Action) => {
 
   switch (action.type) {
     case 'clickCell': {
-      console.log(' in click')
+      // console.log(' in click')
       const cell = action.payload
-      console.log('cell', cell)
+      // console.log('cell', cell)
 
       const board = [...state.board]
 
@@ -18,16 +18,16 @@ const reducer = (state: State, action: Action) => {
         return state
       }
       if (cell.numNeighborMines === 0 && !cell.mine) {
-        console.log('0')
+        console.log('cell cell cell', cell)
         const newBoard = dfs(board, cell)
         return {
           ...state,
           board: newBoard,
         }
       } else {
-        console.log('else')
+        // console.log('else')
         // should have to do this
-        console.log('in else')
+        // console.log('in else')
         board[cell.position[0]][cell.position[1]].shown = true
         return {
           ...state,

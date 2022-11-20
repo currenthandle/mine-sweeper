@@ -23,7 +23,7 @@ const GameCell = ({ cell }: { cell: Cell }): JSX.Element => {
   const getInnerHtml = () => {
     // console.log('get html')
     if (cell.shown) {
-      console.log('shown')
+      // console.log('shown')
       if (cell.mine) {
         return '💣'
       } else {
