@@ -16,7 +16,7 @@ function constructBoard(grid: Grid) {
   // can I do this with zod instead?
   const minePositions = [] as Position[]
   const gameBoard = grid.map((row, i) => {
-    return row.map((cell, j) => {
+    const _row = row.map((cell, j) => {
       const validNeighbors = getValidNeighbors(grid, [i, j])
       let numNeighborMines = 0
       //  validNeighbors.forEach((neighbor) => {
@@ -44,6 +44,7 @@ function constructBoard(grid: Grid) {
       }
       return gameCell
     })
+    return _row
   })
 
   return { gameBoard, minePositions }
@@ -55,5 +56,6 @@ export default function createGameBoard() {
   jsonValidator.parse(data)
   const grid = gridValidator.parse(data.data)
   const gameBoard = constructBoard(grid)
+  console.log('gameBoard', gameBoard)
   return gameBoard
 }

@@ -21,18 +21,21 @@ const reducer = (state: State, action: Action) => {
 
       // ;((board[y] as Cell[])[x] as Cell).flagged
       const newCell = (state.board[y] as Cell[])[x] as Cell
-      console.log('x', x)
-      console.log('y', y)
+      // console.log('x', x)
+      // console.log('y', y)
 
-      console.log('newCell', newCell)
+      // console.log('newCell', newCell)
       newCell.flagged = !cell.flagged
-      console.log('cell!!!!!!', cell)
-      console.log('newCell222', newCell)
-      console.log('typeof newCell', typeof newCell)
-      console.log('board after', state.board)
+      // console.log('cell!!!!!!', cell)
+      // console.log('newCell222', newCell)
+      // console.log('newCell === cell', newCell === cell)
+      // console.log('typeof newCell', typeof newCell)
+      // console.log('board after', state.board)
       const newBoard = [...state.board]
       // newBoard[y][x] = newCell
-      newBoard[y][x] = true
+      console.log('newBoard[y][x]', newBoard[y][x])
+      // newBoard[y][x] = true
+      console.log('newBoard[y][x]', newBoard[y][x])
 
       // board[y][x] = newCell
       console.log('')
