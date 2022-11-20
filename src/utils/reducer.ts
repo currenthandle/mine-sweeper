@@ -4,14 +4,22 @@ import type { Action, Cell, State } from './validators'
 const reducer = (state: State, action: Action) => {
   console.log('state', state)
   console.log('action', action)
-  // console.log('')
-  //const board = [...state.board]
-  const board = state.board
+  const board = [...state.board]
+  const cell = { ...action.payload }
 
+  console.log('state.board === board', state.board === board)
+  console.log(
+    'JSON.stringify(state.board) === JSON.stringify(board)',
+    JSON.stringify(state.board) === JSON.stringify(board)
+  )
+  console.log('action.payload === cell', action.payload === cell)
+  console.log(
+    'JSON.stringify(action.payload) === JSON.stringify(cell)',
+    JSON.stringify(action.payload) === JSON.stringify(cell)
+  )
+  console.log('')
   switch (action.type) {
     case 'toggleFlag': {
-      const cell = action.payload
-      // console.log('cell after actoion payload', cell)
       if (cell.shown) {
         return state
       }
@@ -19,30 +27,9 @@ const reducer = (state: State, action: Action) => {
       const y = cell.position[0]
       const x = cell.position[1]
 
-      // ;((board[y] as Cell[])[x] as Cell).flagged
-      const newCell = (state.board[y] as Cell[])[x] as Cell
-      // console.log('x', x)
-      // console.log('y', y)
-
-      // console.log('newCell', newCell)
-      newCell.flagged = !cell.flagged
-      // console.log('cell!!!!!!', cell)
-      // console.log('newCell222', newCell)
-      // console.log('newCell === cell', newCell === cell)
-      // console.log('typeof newCell', typeof newCell)
-      // console.log('board after', state.board)
-      const newBoard = [...state.board]
-      // newBoard[y][x] = newCell
-      console.log('newBoard[y][x]', newBoard[y][x])
-      // newBoard[y][x] = true
-      console.log('newBoard[y][x]', newBoard[y][x])
-
-      // board[y][x] = newCell
-      console.log('')
-      return {
-        ...state,
-        board: newBoard,
-      }
+      const boardCell = (board[y] as Cell[])[x] as Cell
+      boardCell.flagged = !cell.flagged
+      return { ...state, board }
     }
     case 'clickCell': {
       const cell = action.payload

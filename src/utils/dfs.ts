@@ -12,13 +12,8 @@ const dfs = (board, cell) => {
     return board
   }
 
-  // console.log('')
-  // console.log('before************', cell)
-
   const validNeighbors = getValidNeighbors(board, cell.position)
-  // console.log('validNeighbors', validNeighbors)
   validNeighbors.forEach((neighbor) => {
-    // console.log('neighbor', neighbor)
     return dfs(board, board[neighbor[0]][neighbor[1]])
   })
 

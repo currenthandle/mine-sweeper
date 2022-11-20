@@ -11,12 +11,8 @@ const GameCell = ({ cell }: { cell: Cell }): JSX.Element => {
 
     // if holding shift
     if (e.shiftKey) {
-      // console.log('0000000000000000000000000000000000')
-
-      // console.log('before dispatch toggleFlag', cell)
       dispatch({ type: 'toggleFlag', payload: cell })
     } else {
-      // console.log('click', cell.position)
       dispatch({ type: 'clickCell', payload: cell })
     }
   }
@@ -29,12 +25,10 @@ const GameCell = ({ cell }: { cell: Cell }): JSX.Element => {
     }
   }
   const getInnerHtml = () => {
-    // console.log('get html')
     if (cell.flagged) {
       return '🚩'
     }
     if (cell.shown) {
-      // console.log('shown')
       if (cell.mine) {
         return '💣'
       } else {
