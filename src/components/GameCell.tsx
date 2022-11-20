@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cell } from '../utils/validators'
+import type { Cell } from '../utils/validators'
 
 const GameCell = ({ cell }: { cell: Cell }): JSX.Element => {
   return <div>GameCell</div>
