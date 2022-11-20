@@ -1,4 +1,4 @@
-import data from '../public/grid.json'
+import data from '../../public/grid.json'
 
 import {
   gridValidator,

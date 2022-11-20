@@ -1,4 +1,4 @@
-import { Cell } from '../../utils/validators'
+import { Cell } from '../utils/validators'
 
 const GameCell = (cell: Cell) => {
   return <div>GameCell</div>

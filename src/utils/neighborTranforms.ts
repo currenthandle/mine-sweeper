@@ -1,4 +1,4 @@
-import data from '../public/neighborTransforms.json'
+import data from '../../public/neighborTransforms.json'
 import { neighborTransformsValidator } from './validators'
 
 const neighborTransforms = (() => {

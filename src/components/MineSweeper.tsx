@@ -1,9 +1,9 @@
 import GameBoardGrid from './GameBoardGrid'
-import type { Action, Board, Position, State } from '../../utils/validators'
-import reducer from '../../utils/reducer'
+import type { Action, Board, Position, State } from '../utils/validators'
+import reducer from '../utils/reducer'
 import { useReducer } from 'react'
 import React from 'react'
-import Context from '../../utils/context'
+import Context from '../utils/context'
 
 const MineSweeper = ({
   initalBoard,
