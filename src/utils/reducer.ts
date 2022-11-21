@@ -7,16 +7,16 @@ const reducer = (state: State, action: Action) => {
   const board = [...state.board]
   const cell = { ...action.payload }
 
-  console.log('state.board === board', state.board === board)
+  console.log('state.board === board', state.board === board) // true
   console.log(
     'JSON.stringify(state.board) === JSON.stringify(board)',
     JSON.stringify(state.board) === JSON.stringify(board)
-  )
-  console.log('action.payload === cell', action.payload === cell)
+  ) // false
+  console.log('action.payload === cell', action.payload === cell) //true
   console.log(
     'JSON.stringify(action.payload) === JSON.stringify(cell)',
     JSON.stringify(action.payload) === JSON.stringify(cell)
-  )
+  ) // false
   console.log('')
   switch (action.type) {
     case 'toggleFlag': {
